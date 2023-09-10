@@ -54,6 +54,11 @@ pre {
   border-radius: 10px;
 }
 
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
 /* Navbar Styling */
 
 .navbar {
