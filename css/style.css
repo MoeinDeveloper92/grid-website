@@ -11,6 +11,8 @@
   --secondary-color: #1c3fa8;
   --dark-color: #002240;
   --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
 }
 
 body {
@@ -42,6 +44,14 @@ p {
 img {
   /* it will keep the image withing the parent container nad never allows it to go over the parent */
   width: 100%;
+}
+
+code,
+pre {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* Navbar Styling */
@@ -106,6 +116,10 @@ img {
   overflow: visible;
 }
 
+.showcase-text {
+  animation: slideInFromLeft 1s ease-in;
+}
+
 .showcase-form {
   /* if you want to work with top and bottom you should set postion relative or abslute */
   position: relative;
@@ -115,6 +129,7 @@ img {
   padding: 40px;
   z-index: 100;
   justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in-out;
 }
 
 .showcase-form .form-control {
@@ -152,6 +167,7 @@ img {
 /* Stats */
 .stats {
   padding-top: 100px;
+  animation: slideInFromBottom 1s ease-in;
 }
 .stats-heading > div {
   max-width: 500px;
@@ -252,6 +268,74 @@ img {
 }
 /* End of ffeatures main */
 
+/* Doc head */
+.docs-head img {
+  justify-self: flex-end;
+  width: 300px;
+}
+/* End of Docs head */
+
+/* Docs */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.docs-main li:hover {
+  font-weight: bold;
+  line-break: strict;
+}
+
+/* End of Docs */
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* Tablets and under */
 @media (max-width: 768px) {
   .grid,
@@ -259,8 +343,14 @@ img {
   .stats .grid,
   .cli .grid,
   .cloud .grid,
-  .container .grid {
+  .container .grid,
+  .features-main .grid,
+  .features-head .grid,
+  .features-sub-head .grid,
+  .docs-head .grid,
+  .docs-main .grid {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
   }
 
   .showcase {
@@ -269,16 +359,39 @@ img {
   .showcase-text {
     text-align: center;
     margin-top: 40px;
+    animation: slideInFromTop 1s ease-in;
   }
 
   .showcase-form {
     justify-self: center;
     margin: auto;
+    animation: slideInFromBottom 1s ease;
   }
 
   .cli .grid > *:first-child {
     grid-column: 1/ 1;
     grid-row: 1;
+  }
+
+  .features-main,
+  .features-sub-head,
+  .docs-head {
+    text-align: center;
+  }
+  .features-head img,
+  .features-sub-head img,
+  .docs-head img {
+    justify-self: center;
+    text-align: center;
+  }
+  .features-head h1,
+  .features-head p {
+    text-align: center;
+  }
+
+  .features-main .grid > *:first-child,
+  .features-main .gri > *:nth-child(2) {
+    grid-column: 1/3;
   }
 }
 
